@@ -111,14 +111,13 @@ export default {
         },
         {
             name: "vantage",
-            tagline: "A personal portfolio running at the edge",
-            description:
-                "A personal portfolio built with React and TypeScript, served from the edge on Cloudflare Workers.",
+            tagline: "A personal portfolio",
+            description: "A personal portfolio built with React and TypeScript",
             images: {
                 desktop: "/projects/vantage.webp",
                 mobile: "/projects/vantage-mobile.webp",
             },
-            stack: ["React", "TypeScript", "Vite", "Hono", "Tailwind CSS", "Cloudflare Workers"],
+            stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
             year: "2026",
             links: {
                 live: "https://ywwa.cc",
