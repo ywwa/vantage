@@ -113,7 +113,7 @@ export default {
             name: "vantage",
             tagline: "A personal portfolio running at the edge",
             description:
-                "A lightweight, full-stack portfolio built with React and TypeScript and deployed on Cloudflare Workers. A shared codebase connects the React frontend with server-side request handling through Hono, while Vite streamlines development and production builds. Tailwind CSS provides a consistent, responsive design system with a focus on accessibility and performance.",
+                "A personal portfolio built with React and TypeScript, served from the edge on Cloudflare Workers.",
             images: {
                 desktop: "/projects/vantage.webp",
                 mobile: "/projects/vantage-mobile.webp",
