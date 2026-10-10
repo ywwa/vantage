@@ -1,5 +1,5 @@
 {
-    "name": "webyapp",
+    "name": "vantage",
     "private": true,
     "description": "",
     "type": "module",
@@ -48,7 +48,7 @@
         "wrangler": "4.127.1"
     },
     "cloudflare": {
-        "label": "WebyApp",
+        "label": "Vantage",
         "products": [
             "Workers"
         ],

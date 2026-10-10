@@ -7,9 +7,17 @@ const OUT_DIR = new URL("../public/projects/", import.meta.url);
 
 const DESKTOP_VIEWPORT = { width: 1440, height: 900 };
 const MOBILE_DEVICE = devices["iPhone 13"];
+const MOBILE_VIEWPORT = { width: 390, height: 844 };
 const WAIT_TIMEOUT_MS = 60_000;
 const SETTLE_MS = 1_200;
 const SCREENSHOT_OPTIONS = { type: "webp", quality: 80 };
+
+const STORAGE_BY_HOST = {
+    "rusthub.net": {
+        "rhb.notifications":
+            '{"state":{"dismissed":{"giveaway-120eur":"2026-10-09T17:37:36.826Z"}},"version":0}',
+    },
+};
 
 function usage() {
     console.error("usage: pnpm screenshot -- <url> [name]");
@@ -21,16 +29,23 @@ function normalizeUrl(input) {
     return /^[a-z][a-z0-9+.-]*:\/\//i.test(input) ? input : `http://${input}`;
 }
 
-async function capture(page, url, outFile) {
+async function capture(page, url, outFile, storage = {}) {
+    const entries = Object.entries(storage);
+    if (entries.length > 0) {
+        await page.addInitScript((items) => {
+            for (const [key, value] of items) {
+                localStorage.setItem(key, value);
+            }
+        }, entries);
+    }
+
     try {
         await page.goto(url, {
             waitUntil: "networkidle",
             timeout: WAIT_TIMEOUT_MS,
         });
     } catch (error) {
-        const hint = url.startsWith("http://localhost")
-            ? " (start the dev server first)"
-            : "";
+        const hint = url.startsWith("http://localhost") ? " (start the dev server first)" : "";
         throw new Error(`could not load ${url}${hint}: ${error.message}`);
     }
     await page.waitForTimeout(SETTLE_MS);
@@ -46,12 +61,16 @@ async function main() {
     }
 
     const url = normalizeUrl(urlArg);
+    const storage = STORAGE_BY_HOST[new URL(url).hostname.replace(/^www\./, "")] ?? {};
 
     await mkdir(fileURLToPath(OUT_DIR), { recursive: true });
 
     let slug = name?.trim();
     if (!slug) slug = new URL(url).hostname.replace(/^www\./, "").split(".")[0];
-    slug = slug.toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "");
+    slug = slug
+        .toLowerCase()
+        .replace(/[^a-z0-9-]+/g, "-")
+        .replace(/^-+|-+$/g, "");
 
     const desktopFile = fileURLToPath(new URL(`${slug}.webp`, OUT_DIR));
     const mobileFile = fileURLToPath(new URL(`${slug}-mobile.webp`, OUT_DIR));
@@ -63,18 +82,18 @@ async function main() {
             viewport: DESKTOP_VIEWPORT,
             reducedMotion: "reduce",
         });
-        await capture(desktop, url, desktopFile);
+        await capture(desktop, url, desktopFile, storage);
 
-        const { isMobile, hasTouch, userAgent, viewport, deviceScaleFactor } = MOBILE_DEVICE;
+        const { isMobile, hasTouch, userAgent, deviceScaleFactor } = MOBILE_DEVICE;
         const mobile = await browser.newPage({
             deviceScaleFactor,
             hasTouch,
             isMobile,
             reducedMotion: "reduce",
             userAgent,
-            viewport,
+            viewport: MOBILE_VIEWPORT,
         });
-        await capture(mobile, url, mobileFile);
+        await capture(mobile, url, mobileFile, storage);
     } finally {
         await browser.close();
     }
