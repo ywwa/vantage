@@ -1,11 +1,12 @@
 import { Globe } from "lucide-react";
 import { LuGithub } from "react-icons/lu";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import ProjectPreview from "@/components/ui/project-preview";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { Skill } from "@/components/ui/skill";
 import home from "@/data/home";
+import { techIcons } from "@/data/tech-icons";
 import { formatIndex } from "@/lib/format-index";
 
 export default function Projects() {
@@ -54,12 +55,13 @@ export default function Projects() {
                                 </span>
                                 <div className="flex flex-wrap gap-1.5">
                                     {project.stack.map((tech) => (
-                                        <Badge
+                                        <Skill
                                             key={tech}
+                                            icon={techIcons[tech]}
+                                            label={tech}
+                                            size="sm"
                                             variant="outline"
-                                        >
-                                            {tech}
-                                        </Badge>
+                                        />
                                     ))}
                                 </div>
                             </div>
