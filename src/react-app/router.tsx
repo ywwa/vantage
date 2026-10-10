@@ -1,11 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import RootLayout from "@/components/layouts/RootLayout";
-import LenisBoundary from "@/components/LenisBoundary";
+import LenisBoundary from "@/components/lenis-boundary";
+import RootLayout from "@/components/root-layout";
 
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import ServerErrorPage from "./pages/ServerErrorPage";
+import HomePage from "./routes/home";
 
 const router = createBrowserRouter([
     {
@@ -15,8 +13,8 @@ const router = createBrowserRouter([
                 element: <RootLayout />,
                 children: [
                     { path: "/", element: <HomePage /> },
-                    { path: "/500", element: <ServerErrorPage /> },
-                    { path: "*", element: <NotFoundPage /> },
+                    // { path: "/500", element: <ServerErrorPage /> },
+                    // { path: "*", element: <NotFoundPage /> },
                 ],
             },
         ],

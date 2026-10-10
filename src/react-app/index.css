@@ -190,12 +190,8 @@
     body {
         background-color: var(--color-background);
         color: var(--color-foreground);
-        background-image:
-            radial-gradient(60rem 60rem at 50% -10%, rgb(249 168 212 / 0.08), transparent 60%),
-            radial-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px);
-        background-repeat: no-repeat, repeat;
-        background-size:
-            100% 100%,
-            26px 26px;
+        background-image: radial-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px);
+        background-repeat: repeat;
+        background-size: 26px 26px;
     }
 }
