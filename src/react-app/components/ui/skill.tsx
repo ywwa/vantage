@@ -35,7 +35,7 @@ export const skillVariants = cva(
             },
             variant: {
                 "default":
-                    "border-border/60 bg-card/40 text-muted-foreground hover:-translate-y-0.5 hover:border-primary/40 hover:bg-card hover:text-foreground hover:shadow-lg hover:shadow-primary/10",
+                    "border-border/60 bg-card/40 text-muted-foreground hover:-translate-y-0.5 hover:border-primary/40 hover:bg-card hover:text-foreground",
                 "ghost":
                     "border-transparent bg-secondary/40 text-muted-foreground hover:bg-secondary hover:text-foreground",
                 "outline":

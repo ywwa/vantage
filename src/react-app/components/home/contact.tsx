@@ -2,6 +2,7 @@ import { Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
+import { mailto } from "@/data/contact";
 
 export default function Contact() {
     return (
@@ -22,9 +23,7 @@ export default function Contact() {
             <div className="flex flex-wrap items-center justify-center gap-3">
                 <Button
                     size="lg"
-                    onClick={() => {
-                        window.location.href = "mailto:contact@ywwa.cc";
-                    }}
+                    render={<a href={mailto} />}
                 >
                     <Mail />
                     Email me

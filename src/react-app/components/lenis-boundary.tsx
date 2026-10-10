@@ -17,6 +17,7 @@ export default function LenisBoundary() {
                 wheelMultiplier: 1,
                 orientation: "vertical",
                 gestureOrientation: "vertical",
+                respectReducedMotion: true,
             }}
         >
             <Outlet />

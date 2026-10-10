@@ -5,7 +5,7 @@ import AppHeader from "./app-header";
 
 export default function RootLayout() {
     return (
-        <div className="mih-h-svh relative isolate flex flex-col">
+        <div className="relative isolate flex min-h-svh flex-col">
             <AppHeader />
 
             <main className="flex flex-1 flex-col pt-16">

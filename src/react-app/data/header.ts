@@ -1,5 +1,5 @@
 type Link = { id: string; num: string; label: string; to: string };
-type Content = { links: Link[]; [X: string]: string | Link[] };
+type Content = { links: Link[] };
 
 export default {
     links: [

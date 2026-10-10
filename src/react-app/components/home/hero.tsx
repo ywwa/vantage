@@ -5,19 +5,16 @@ import type React from "react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { socials } from "@/data/socials";
+import { scrollToSection } from "@/lib/scroll";
 
 import { WindowFrame } from "../ui/window-frame";
-
-function handleNavClick(lenis: ReturnType<typeof useLenis>, id: string) {
-    if (lenis) lenis.scrollTo(`#${id}`, { offset: -72 });
-}
 
 export default function Hero() {
     const lenis = useLenis();
 
     const onClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
-        handleNavClick(lenis, "projects");
+        scrollToSection(lenis, "projects");
     };
 
     return (

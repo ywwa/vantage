@@ -16,10 +16,7 @@ app.get("/favicon.ico", (c) => {
 });
 
 const ROBOTS_TXT = `User-Agent: *
-Disallow: /api/video
-Disallow: /api/videos/poster
-Disallow: /api/videos/stream
-Disallow: /arcanum
+Allow: /
 `;
 
 app.get("/robots.txt", ({ body }) => {
