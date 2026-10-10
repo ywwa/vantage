@@ -1,6 +1,6 @@
 # vantage
 
-Portfolio site for Gabriels Kukutis — [ywwa.cc](https://ywwa.cc).
+Portfolio site [ywwa.cc](https://ywwa.cc).
 
 ![vantage preview](./public/og.png)
 
@@ -25,16 +25,16 @@ pnpm dev
 
 ## Scripts
 
-| Command            | Description                                  |
-| ------------------ | -------------------------------------------- |
-| `pnpm dev`         | Start the dev server                         |
-| `pnpm build`       | Type-check and build for production          |
-| `pnpm preview`     | Build and preview the production output      |
-| `pnpm deploy`      | Deploy the worker with Wrangler              |
-| `pnpm check`       | Type-check, build, and dry-run a deploy      |
-| `pnpm lint`        | Lint with oxlint                             |
-| `pnpm format`      | Format with oxfmt                            |
-| `pnpm screenshot`  | Capture project screenshots (Playwright)     |
+| Command           | Description                              |
+| ----------------- | ---------------------------------------- |
+| `pnpm dev`        | Start the dev server                     |
+| `pnpm build`      | Type-check and build for production      |
+| `pnpm preview`    | Build and preview the production output  |
+| `pnpm deploy`     | Deploy the worker with Wrangler          |
+| `pnpm check`      | Type-check, build, and dry-run a deploy  |
+| `pnpm lint`       | Lint with oxlint                         |
+| `pnpm format`     | Format with oxfmt                        |
+| `pnpm screenshot` | Capture project screenshots (Playwright) |
 
 ## Structure
 
